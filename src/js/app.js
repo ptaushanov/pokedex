@@ -17,8 +17,14 @@ window.addEventListener("DOMContentLoaded", () => {
     else {
       throw new Error(`Can't get resources. Status: ${res.status}`);
     }
-  }).then(res => {
-    console.log(res)
+  }).then(data => {
+    const pokemons = data.results
+    pokemons.forEach(poke => {
+      const liNode = document.createElement("li");
+      liNode.innerText = poke.name;
+      ul.appendChild(liNode);
+    });
+    
   })
   .catch(err => {
     console.error(err.message)
